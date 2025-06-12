@@ -6,14 +6,13 @@ export default function HomePage() {
 
   return (
     <div>
-      <LanguageSwitch />
-  
+      
       <h1 className="text-3xl font-bold underline">
         {t('title')}
       </h1>
 
       <a href="/about" className="mt-4 inline-block text-blue-500 hover:underline">
-        Goto About Page
+        About
       </a>
       
 
