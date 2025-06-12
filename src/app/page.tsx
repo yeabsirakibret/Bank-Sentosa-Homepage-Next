@@ -12,6 +12,11 @@ export default function HomePage() {
         {t('title')}
       </h1>
 
+      <a href="/about" className="mt-4 inline-block text-blue-500 hover:underline">
+        Goto About Page
+      </a>
+      
+
       
     </div>
   );
