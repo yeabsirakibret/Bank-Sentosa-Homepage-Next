@@ -4,7 +4,8 @@
     "footer": "© 2023 Our Company"
   },
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Hello world!",
+    "aboutLink": "About"
   },
   "AboutPage": {
     "title": "About us",

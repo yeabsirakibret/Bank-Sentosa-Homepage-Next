@@ -4,7 +4,8 @@
     "footer": "© 2023 Perusahaan Kami"
   },
   "HomePage": {
-    "title": "Halo dunia!"
+    "title": "Halo dunia!",
+    "aboutLink": "Tentang"
   },
   "AboutPage": {
     "title": "Tentang kami",
