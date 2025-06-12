@@ -1,6 +1,5 @@
-// Example: LanguageSwitch.tsx
-// filepath: src/components/LanguageSwitch.tsx
-import React from 'react';
+"use client";
+
 import { setLocale } from '../utils/setLocale';
 
 export default function LanguageSwitch() {
