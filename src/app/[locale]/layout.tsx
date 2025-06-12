@@ -5,6 +5,7 @@ import LanguageSwitch from '@/components/LanguageSwitch';
 
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import Link from 'next/link';
  
 export default async function RootLayout({
   children
@@ -23,11 +24,17 @@ export default async function RootLayout({
               <div>Logo</div>
             
               <ul className="flex space-x-6">
-                <li>Home</li>
-                <li>Blog</li>
-                <li>About</li>
-                <li>Contact</li>
+                <li><Link href="/">{/* home */}Home</Link></li>
+                <li><Link href="/blog">Blog</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+
+                {/* 🔥 locale-aware link to /news */}
+                <li>
+                  <Link href="/news">News</Link>
+                </li>
               </ul>
+
               <LanguageSwitch />
             </nav>
           </header>
