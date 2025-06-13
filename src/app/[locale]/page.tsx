@@ -1,10 +1,13 @@
+"use client"
 import { useTranslations } from 'next-intl';
 
 import {Link} from '@/i18n/navigation';
-import { getTranslations } from 'next-intl/server';
+import SliderTest from '@/components/SliderTest';
+
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
+  
 
   return (
     <div>
@@ -12,11 +15,14 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold underline">
         {t('title')}
       </h1>
+      <br />
 
-
+{/* 
       <Link href="/about">
         {t('aboutLink')}
-      </Link>
+      </Link> */}
+
+      <SliderTest />
       
 
       
