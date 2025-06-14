@@ -168,7 +168,7 @@ export default function Header() {
 
   return (
     <div>
-      <header className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
+      <header className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-black p-4 shadow-lg ">
         <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
           <Link href="/" className="text-lg font-bold mx-4">
             <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />

@@ -7,8 +7,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gray-100 text-gray-800 border-t border-gray-300 py-6 mt-12">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+    <footer className="w-full bg-gray-100 text-gray-800 border-t border-gray-300 py-6 ">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-col justify-center items-center">
         <p className="text-sm text-center md:text-left">
           &copy; {year} Bank Sentosa. All rights reserved.
         </p>

@@ -23,7 +23,7 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Header />
 
-          <main className="max-w-7xl mx-auto p-6 mt-20">
+          <main className="w-full h-screen mt-20 bg-blue-400">
             {children}
           </main>
 
