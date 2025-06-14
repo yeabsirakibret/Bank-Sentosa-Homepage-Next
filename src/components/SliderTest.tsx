@@ -33,9 +33,9 @@ export default function KeenSliderDemo() {
     },
     {
       desktopImage: 'banner_2.png',
-      mobileImage: 'banner_1_mobile.jpg',
+      mobileImage: 'banner_1_mobile.jpg', // Assuming you have a tall mobile image here too
       alt: 'Banner 2',
-      text: 'Banner two detail', // No text overlay
+      text: 'Banner two detail',
     },
     // Add more slides as needed…
   ];
@@ -46,7 +46,10 @@ export default function KeenSliderDemo() {
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className="keen-slider__slide relative flex items-center justify-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+            // --- CHANGE IS ON THIS LINE ---
+            className="keen-slider__slide relative flex items-center justify-center 
+                       aspect-[9/16] md:aspect-[16/9] lg:aspect-[21/9]" // Use aspect ratio instead of fixed height
+            // REMOVED: h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]
           >
             <picture className="w-full h-full">
               <source media="(max-width: 767px)" srcSet={slide.mobileImage} />
