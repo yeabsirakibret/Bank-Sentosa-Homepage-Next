@@ -4,6 +4,22 @@
     "footer": "© 2023 Perusahaan Kami",
     "download": "Unduh"
   },
+  "Header": {
+    "home": "Beranda",
+    "individual": "Perorangan",
+    "savings": "Tabungan",
+    "loans": "Pinjaman",
+    "digitalBanking": "Perbankan Digital",
+    "corporate": "Korporat",
+    "businessAccounts": "Rekening Bisnis",
+    "corporateLoans": "Pinjaman Korporat",
+    "cashManagement": "Manajemen Kas",
+    "companyInformation": "Informasi Perusahaan",
+    "aboutUs": "Tentang Kami",
+    "leadership": "Kepemimpinan",
+    "investorRelations": "Hubungan Investor",
+    "newsAndArticle": "Berita & Artikel"
+  },
   "HomePage": {
     "title": "Halo dunia!",
     "aboutLink": "Tentang"

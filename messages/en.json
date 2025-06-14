@@ -4,6 +4,22 @@
     "footer": "© 2023 Our Company",
     "download": "Download"
   },
+  "Header": {
+    "home": "Home",
+    "individual": "Individual",
+    "savings": "Savings",
+    "loans": "Loans",
+    "digitalBanking": "Digital Banking",
+    "corporate": "Corporate",
+    "businessAccounts": "Business Accounts",
+    "corporateLoans": "Corporate Loans",
+    "cashManagement": "Cash Management",
+    "companyInformation": "Company Information",
+    "aboutUs": "About Us",
+    "leadership": "Leadership",
+    "investorRelations": "Investor Relations",
+    "newsAndArticle": "News & Article"
+  },
   "HomePage": {
     "title": "Hello world!",
     "aboutLink": "About"
