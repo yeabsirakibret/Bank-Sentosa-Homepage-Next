@@ -4,15 +4,14 @@ import { useState, useEffect, useRef } from 'react';
 import LanguageSwitch from './LanguageSwitch';
 import Link from 'next/link';
 import DownloadApp from './HeaderComponents/DownloadApp';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { title } from 'process';
 
 export default function Header() {
   const t = useTranslations('Header');
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
+  const [mobileSubmenusOpen, setMobileSubmenusOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
 
   const menuItems = [
@@ -22,62 +21,159 @@ export default function Header() {
     },
     {
       title: t('about_us'),
-      submenu: [t('about_us'), t('management')],
+      submenu: [
+        { title: t('about_us') },
+        { title: t('management') },
+      ],
     },
     {
       title: t('product'),
-      submenu:[
-        t('saving'),
-        t('loan'),
-        t('auction_info')
-      ]
+      submenu: [
+        { 
+          title: t('savings'),
+          submenu: [
+            { title: t('savings') },
+            { title: t('deposit') }
+          ],
+        },
+        {
+          title: t('loan'),
+          submenu: [
+            { title: t('working_capital') },
+            { title: t('investment_credit') },
+            { title: t('consumer_credit') }
+          ],
+        },
+        { title: t('auction_info') },
+      ],
     },
     {
       title: t('report'),
       submenu: [
-        t('financial_statements'),
-        t('governance_report'),
-        t('annual_report')
-      ]
+        { title: t('financial_statements') },
+        { title: t('governance_report') },
+        { title: t('annual_report') },
+      ],
     },
     {
       title: t('e_form'),
-      submenu: []
-    }
-   
-    
+      submenu: [],
+    },
   ];
 
-  // Close submenu and mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setOpenSubmenuIndex(null);
         setMenuOpen(false);
+        setMobileSubmenusOpen({});
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-  // Toggle submenu for mobile and desktop
   const toggleSubmenu = (index: number) => {
-    setOpenSubmenuIndex(openSubmenuIndex === index ? null : index);
+    setMobileSubmenusOpen({});
+    if (openSubmenuIndex === index) {
+      setOpenSubmenuIndex(null);
+    } else {
+      setOpenSubmenuIndex(index);
+    }
+  };
+  
+  const toggleMobileNestedSubmenu = (path: string) => {
+    setMobileSubmenusOpen(prev => {
+        const isOpen = !!prev[path];
+        const newStates = { ...prev };
+
+        const parentPath = path.substring(0, path.lastIndexOf('-'));
+        Object.keys(newStates).forEach(key => {
+            if (key.startsWith(parentPath + '-') && key.lastIndexOf('-') === path.lastIndexOf('-') && key !== path) {
+                delete newStates[key];
+            }
+        });
+
+        if (isOpen) {
+            Object.keys(newStates).forEach(key => {
+                if (key.startsWith(path)) {
+                    delete newStates[key];
+                }
+            });
+        } else {
+            newStates[path] = true;
+        }
+
+        return newStates;
+    });
+};
+
+  const renderSubmenu = (items: any[], level = 1, parentPath = '') => {
+    return (
+      <ul
+        className={`
+          w-full pl-4 md:pl-0
+          md:absolute bg-white md:shadow-xl md:rounded-lg md:py-2 z-50 md:whitespace-nowrap md:min-w-[200px]
+          ${level === 1 ? 'md:left-0 md:top-full md:mt-1' : 'md:left-full md:top-0 md:ml-1'}
+        `}
+      >
+        {items.map((item, idx) => {
+          const currentPath = `${parentPath}-${idx}`;
+          const isMobileSubmenuOpen = !!mobileSubmenusOpen[currentPath];
+          const hasSubmenu = item.submenu && item.submenu.length > 0;
+
+          return (
+            <li key={idx} className="relative group/submenu">
+              <div
+                className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={(e) => {
+                  if (hasSubmenu) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileNestedSubmenu(currentPath);
+                  }
+                }}
+              >
+                <Link href="#" className="block w-full">
+                  {item.title}
+                </Link>
+                {hasSubmenu && (
+                  <>
+                    <span className="md:hidden">
+                      {isMobileSubmenuOpen ? <ChevronUp className="w-4 h-4 ml-2" /> : <ChevronDown className="w-4 h-4 ml-2" />}
+                    </span>
+                    <span className="hidden md:block">
+                      <ChevronRight className="w-4 h-4 ml-2" />
+                    </span>
+                  </>
+                )}
+              </div>
+
+              {hasSubmenu && (
+                 <div className={`
+                    ${isMobileSubmenuOpen ? 'block' : 'hidden'}
+                    md:hidden md:absolute md:top-0 md:left-full md:group-hover/submenu:block
+                 `}>
+                  {renderSubmenu(item.submenu, level + 1, currentPath)}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    );
   };
 
   return (
     <div>
       <header className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
         <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
-          {/* Logo */}
           <Link href="/" className="text-lg font-bold mx-4">
             <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />
           </Link>
 
-          {/* Hamburger menu */}
           <button
             className="md:hidden block text-black focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -92,20 +188,18 @@ export default function Header() {
             </svg>
           </button>
 
-          {/* Navigation */}
           <ul
             className={`w-full md:w-auto md:flex items-start md:items-center space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0 transition-all duration-300 ease-in-out ${
-              menuOpen ? 'block' : 'hidden md:flex'
+              menuOpen ? 'block' : 'hidden'
             }`}
           >
             {menuItems.map((item, index) => (
               <li
                 key={index}
-                className="relative group"
-                onMouseEnter={() => setOpenSubmenuIndex(index)}
-                // onMouseLeave removed from here
+                className="relative"
+                onMouseEnter={() => window.innerWidth >= 768 && setOpenSubmenuIndex(index)}
+                // onMouseLeave={() => window.innerWidth >= 768 && setOpenSubmenuIndex(null)}
               >
-                {/* Desktop & Mobile link */}
                 <div
                   className="flex items-center justify-between cursor-pointer px-3 py-2 hover:text-yellow-500 font-bold transition-colors duration-200"
                   onClick={() => toggleSubmenu(index)}
@@ -120,34 +214,21 @@ export default function Header() {
                   )}
                 </div>
 
-                {/* Submenu */}
                 {item.submenu.length > 0 && (
-                  <ul
+                  <div
                     className={`
-                      absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 z-50
+                      w-full md:w-auto
                       transition-all duration-200 ease-in-out
-                      ${openSubmenuIndex === index ? 'block opacity-100' : 'hidden opacity-0'}
-                      md:group-hover:block md:group-hover:opacity-100
+                      md:absolute md:left-0 md:bg-white md:shadow-xl md:rounded-lg md:py-2 md:z-50
+                      ${openSubmenuIndex === index ? 'block' : 'hidden'}
                     `}
-                    onMouseLeave={() => setOpenSubmenuIndex(null)}
-                    onMouseEnter={() => setOpenSubmenuIndex(index)}
                   >
-                    {item.submenu.map((subItem, subIndex) => (
-                      <li
-                        key={subIndex}
-                        className="px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition-colors duration-200"
-                      >
-                        <Link href="#" className="block w-full">
-                          {subItem}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                    {renderSubmenu(item.submenu, 1, `${index}`)}
+                  </div>
                 )}
               </li>
             ))}
 
-            {/* Language Switch & App Download */}
             <li className="px-3">
               <LanguageSwitch />
             </li>
@@ -157,31 +238,6 @@ export default function Header() {
           </ul>
         </nav>
       </header>
-
-      
-      {/* {
-        openSubmenuIndex !== null && menuItems[openSubmenuIndex]?.submenu.length > 0 && (
-          <div 
-            className="bg-gray-100 text-black w-full block md:block py-4 shadow-lg shadow-yellow-100 border-1 "
-            onMouseLeave={() => setOpenSubmenuIndex(null)}>
-            <div className="max-w-7xl mx-auto flex flex-wrap gap-4 px-4 transition-opacity duration-500">
-              {menuItems[openSubmenuIndex].submenu.map((subItem, idx) => (
-                <Link
-                  key={idx}
-                  href="#"
-                  className="text-black hover:text-yellow-700 font-medium transition-colors duration-200"
-                >
-                  {subItem}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )
-      } */}
-      
-      
-
     </div>
-   
   );
 }
