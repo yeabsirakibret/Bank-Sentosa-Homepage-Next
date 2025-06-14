@@ -116,7 +116,7 @@ export default function Header() {
         className={`
           w-full pl-4 md:pl-0
           md:absolute bg-white md:shadow-xl md:rounded-lg md:py-2 z-50 md:whitespace-nowrap md:min-w-[200px]
-          ${level === 1 ? 'md:left-0 md:top-full md:mt-1' : 'md:left-full md:top-0 md:ml-1'}
+          ${level === 1 ? 'md:left-0 md:top-full md:mt-1' : 'md:left-full md:top-0 md:ml-0'}
         `}
       >
         {items.map((item, idx) => {
