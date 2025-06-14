@@ -17,7 +17,7 @@ export default function KeenSliderDemo() {
   useEffect(() => {
     const interval = setInterval(() => {
       instanceRef.current?.next();
-    }, 2000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [instanceRef]);
 

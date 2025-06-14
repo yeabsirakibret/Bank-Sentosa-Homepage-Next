@@ -4,18 +4,22 @@ import { useState } from 'react';
 
 import LanguageSwitch from './LanguageSwitch';
 import Link from 'next/link';
+import Image from 'next/image'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gray-900 text-white p-4">
+    <header className="bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
       <nav className="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-        <div className="text-lg font-bold">Logo</div>
+
+        <div className="text-lg font-bold mx-4">
+          <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" style={{ height: '50px' }} />
+        </div>
 
         {/* Hamburger */}
         <button
-          className="md:hidden block text-white"
+          className="md:hidden block text-black"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg
@@ -54,7 +58,18 @@ export default function Header() {
           <li><Link href="/contact">Contact</Link></li>
           <li><Link href="/news">News</Link></li>
           <li><LanguageSwitch /></li>
+          <li>
+            <Link
+              href="#"
+              className="bg-blue-400 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-yellow-300"
+            >
+              <img src="/sentosa_logo_only.png" alt="icon" className="w-5 h-5" />
+              
+              <span>Download neobank</span>
+            </Link>
+          </li>
         </ul>
+        
       </nav>
     </header>
   );
