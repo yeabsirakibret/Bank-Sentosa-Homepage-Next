@@ -1,7 +1,8 @@
 {
   "Layout": {
     "header": "Selamat datang di aplikasi kami",
-    "footer": "© 2023 Perusahaan Kami"
+    "footer": "© 2023 Perusahaan Kami",
+    "download": "Unduh"
   },
   "HomePage": {
     "title": "Halo dunia!",

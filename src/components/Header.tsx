@@ -1,75 +1,150 @@
 'use client';
 
-import { useState } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
 import LanguageSwitch from './LanguageSwitch';
 import Link from 'next/link';
-import Image from 'next/image'
+import DownloadApp from './HeaderComponents/DownloadApp';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const menuItems = [
+    {
+      title: 'Individual',
+      submenu: ['Savings', 'Loans', 'Digital Banking'],
+    },
+    {
+      title: 'Corporate',
+      submenu: ['Business Accounts', 'Corporate Loans', 'Cash Management'],
+    },
+    {
+      title: 'Company Information',
+      submenu: ['About Us', 'Leadership', 'Investor Relations'],
+    },
+    {
+      title: 'News & Article',
+      submenu: [],
+    },
+  ];
+
+  // Close submenu and mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpenSubmenuIndex(null);
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Toggle submenu for mobile and desktop
+  const toggleSubmenu = (index: number) => {
+    setOpenSubmenuIndex(openSubmenuIndex === index ? null : index);
+  };
 
   return (
     <header className="bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
-      <nav className="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-
+      <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
+        {/* Logo */}
         <div className="text-lg font-bold mx-4">
-          <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" style={{ height: '50px' }} />
+          <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />
         </div>
 
-        {/* Hamburger */}
+        {/* Hamburger menu */}
         <button
-          className="md:hidden block text-black"
+          className="md:hidden block text-black focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
 
-        {/* Navigation links */}
+        {/* Navigation */}
         <ul
-          className={`w-full md:w-auto md:flex items-center space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0 ${
+          className={`w-full md:w-auto md:flex items-start md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0 transition-all duration-300 ease-in-out ${
             menuOpen ? 'block' : 'hidden md:flex'
           }`}
         >
-          <li><Link href="/">{/* home */}Home</Link></li>
-          <li><Link href="/blog">Blog</Link></li>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-          <li><Link href="/news">News</Link></li>
-          <li><LanguageSwitch /></li>
-          <li>
-            <Link
-              href="#"
-              className="bg-blue-400 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-yellow-300"
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className="relative group"
+              onMouseEnter={() => setOpenSubmenuIndex(index)}
+              onMouseLeave={() => setOpenSubmenuIndex(null)}
             >
-              <img src="/sentosa_logo_only.png" alt="icon" className="w-5 h-5" />
-              
-              <span>Download neobank</span>
-            </Link>
+              {/* Desktop & Mobile link */}
+              <div
+                className="flex items-center justify-between cursor-pointer px-3 py-2 hover:text-yellow-500 transition-colors duration-200"
+                onClick={() => toggleSubmenu(index)}
+              >
+                <span>{item.title}</span>
+                {item.submenu.length > 0 && (
+                  <svg
+                    className="w-4 h-4 ml-1 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d={
+                        openSubmenuIndex === index
+                          ? 'M5 15l7-7 7 7'
+                          : 'M19 9l-7 7-7-7'
+                      }
+                    />
+                  </svg>
+                )}
+              </div>
+
+              {/* Submenu */}
+              {item.submenu.length > 0 && (
+                <ul
+                  className={`
+                    absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-lg py-2 z-50
+                    transition-all duration-200 ease-in-out
+                    ${openSubmenuIndex === index ? 'block opacity-100' : 'hidden opacity-0'}
+                    md:group-hover:block md:group-hover:opacity-100
+                  `}
+                >
+                  {item.submenu.map((subItem, subIndex) => (
+                    <li
+                      key={subIndex}
+                      className="px-4 py-2 hover:bg-gray-100 whitespace-nowrap transition-colors duration-200"
+                    >
+                      <Link href="#" className="block w-full">
+                        {subItem}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+
+          {/* Language Switch & App Download */}
+          <li className="px-3">
+            <LanguageSwitch />
+          </li>
+          <li className="px-3">
+            <DownloadApp />
           </li>
         </ul>
-        
       </nav>
     </header>
   );

@@ -1,7 +1,8 @@
 {
   "Layout": {
     "header": "Welcome to our application",
-    "footer": "© 2023 Our Company"
+    "footer": "© 2023 Our Company",
+    "download": "Download"
   },
   "HomePage": {
     "title": "Hello world!",
