@@ -2,8 +2,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import { useTranslations } from 'next-intl';
 
 export default function KeenSliderDemo() {
+  const t = useTranslations('Global');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
@@ -21,15 +23,21 @@ export default function KeenSliderDemo() {
     return () => clearInterval(interval);
   }, [instanceRef]);
 
+  // Each banner object supports desktop/mobile images and optional text overlay.
   const slides = [
     {
-      image: 'banner_1.jpg',
+      desktopImage: 'banner_1.jpg',
+      mobileImage: 'banner_1_mobile.jpg',
       alt: 'Banner 1',
+      text: t('digital_banking_services'),
     },
     {
-      image: 'banner_1.jpg',
+      desktopImage: 'banner_2.png',
+      mobileImage: 'banner_1_mobile.jpg',
       alt: 'Banner 2',
-    }
+      text: 'Banner two detail', // No text overlay
+    },
+    // Add more slides as needed…
   ];
 
   return (
@@ -38,13 +46,21 @@ export default function KeenSliderDemo() {
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className="keen-slider__slide flex items-center justify-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+            className="keen-slider__slide relative flex items-center justify-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
           >
-            <img
-              src={slide.image}
-              alt={slide.alt}
-              className="w-full h-full object-cover"
-            />
+            <picture className="w-full h-full">
+              <source media="(max-width: 767px)" srcSet={slide.mobileImage} />
+              <img
+                src={slide.desktopImage}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+              />
+            </picture>
+            {slide.text && (
+              <div className="absolute left-6 bottom-10 z-10 text-white text-xl sm:text-2xl md:text-3xl font-bold">
+                {slide.text}
+              </div>
+            )}
           </div>
         ))}
       </div>

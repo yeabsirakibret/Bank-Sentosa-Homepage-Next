@@ -45,6 +45,7 @@
     "description": "This is the about page of our application."
   },
   "Global": {
-    "description": "Trusted BPR in Indonesia, providing secure and accessible banking services for all. We are committed to delivering the best banking experience with the latest technology."
+    "description": "Trusted BPR in Indonesia, providing secure and accessible banking services for all. We are committed to delivering the best banking experience with the latest technology.",
+    "digital_banking_services": "Digital Banking Services"
   }
 }
