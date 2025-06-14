@@ -115,8 +115,8 @@ export default function Header() {
       <ul
         className={`
           w-full pl-4 md:pl-0
-          md:absolute bg-white md:shadow-xl md:rounded-lg md:py-2 z-50 md:whitespace-nowrap md:min-w-[200px]
-          ${level === 1 ? 'md:left-0 md:top-full md:mt-1' : 'md:left-full md:top-0 md:ml-0'}
+          md:absolute  md:shadow-xl md:rounded-lg md:py-2 z-50 md:whitespace-nowrap md:min-w-[200px]
+          ${level === 1 ? 'md:left-0 md:top-full md:mt-1 bg-white' : 'md:left-full md:top-0 md:ml-0 bg-white'}
         `}
       >
         {items.map((item, idx) => {
