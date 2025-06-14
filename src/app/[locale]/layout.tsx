@@ -19,11 +19,11 @@ export default async function RootLayout({
  
   return (
     <html lang={locale}>
-      <body>
+      <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider>
           <Header />
 
-          <main className="w-full h-screen mt-20 bg-blue-400">
+          <main className="w-full flex-1 mt-20 bg-blue-400">
             {children}
           </main>
 

@@ -8,7 +8,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div className="p-5">
+      <div className="pt-0">
         <SliderTestClient />
       </div>
     </div>
