@@ -55,12 +55,12 @@ export default function Header() {
 
   return (
     <div>
-      <header className="bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
+      <header className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-black p-4 shadow-lg shadow-yellow-50">
         <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
           {/* Logo */}
-          <div className="text-lg font-bold mx-4">
+          <Link href="/" className="text-lg font-bold mx-4">
             <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />
-          </div>
+          </Link>
 
           {/* Hamburger menu */}
           <button
@@ -92,7 +92,7 @@ export default function Header() {
               >
                 {/* Desktop & Mobile link */}
                 <div
-                  className="flex items-center justify-between cursor-pointer px-3 py-2 hover:text-yellow-500 transition-colors duration-200"
+                  className="flex items-center justify-between cursor-pointer px-3 py-2 hover:text-yellow-500 font-bold transition-colors duration-200"
                   onClick={() => toggleSubmenu(index)}
                 >
                   <span>{item.title}</span>

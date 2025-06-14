@@ -1,37 +1,16 @@
-"use client"
-import { useTranslations } from 'next-intl';
-
-import {Link} from '@/i18n/navigation';
-import SliderTest from '@/components/SliderTest';
+import { getTranslations } from 'next-intl/server';
+import SliderTestClient from '@/components/SliderTest'; // renamed to clarify it's a client component
 
 
-export default function HomePage() {
-  const t = useTranslations('HomePage');
-  
+
+export default async function HomePage() {
+  const t = await getTranslations('HomePage');
 
   return (
     <div>
-{/*       
-      <h1 className="text-3xl font-bold underline">
-        {t('title')}
-      </h1>
-      <br /> */}
-
-{/* 
-      <Link href="/about">
-        {t('aboutLink')}
-      </Link> */}
-
-      <SliderTest />
-      
-
-      
+      <div className="p-5">
+        <SliderTestClient />
+      </div>
     </div>
   );
 }
-
-
-// export async function HomePageAs() {
-//   const t = await getTranslations('HomePage');
-//   return <h1>{t('title')}</h1>;
-// }

@@ -27,5 +27,8 @@
   "AboutPage": {
     "title": "Tentang kami",
     "description": "Ini adalah halaman tentang aplikasi kami."
+  },
+  "Global": {
+    "description": "BPR terpercaya di Indonesia, menyediakan layanan perbankan yang aman dan mudah diakses untuk semua kalangan. Kami berkomitmen untuk memberikan pengalaman perbankan yang terbaik dengan teknologi terkini."
   }
 }
