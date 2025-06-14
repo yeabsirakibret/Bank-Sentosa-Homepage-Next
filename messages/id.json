@@ -18,7 +18,22 @@
     "aboutUs": "Tentang Kami",
     "leadership": "Kepemimpinan",
     "investorRelations": "Hubungan Investor",
-    "newsAndArticle": "Berita & Artikel"
+    "newsAndArticle": "Berita & Artikel",
+    "product": "Produk",
+    "about_us": "Tentang Kami",
+    "report": "Laporan",
+    "management": "Manajemen",
+    "saving": "Tabungan",
+    "loan": "Pinjaman",
+    "auction_info": "Info Lelang",
+    "deposit": "Deposito",
+    "working_capital": "Modal Kerja",
+    "investment_credit": "Kredit Investasi",
+    "consumer_credit": "Kredit Konsumen",
+    "financial_statements": "Laporan Keuangan",
+    "governance_report": "Laporan Tata Kelola",
+    "annual_report": "Laporan Tahunan",
+    "e_form": "Formulir Elektronik"
   },
   "HomePage": {
     "title": "Halo dunia!",

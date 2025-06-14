@@ -6,6 +6,7 @@ import Link from 'next/link';
 import DownloadApp from './HeaderComponents/DownloadApp';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { title } from 'process';
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -16,21 +17,35 @@ export default function Header() {
 
   const menuItems = [
     {
-      title: t('individual'),
-      submenu: [t('savings'), t('loans'), t('digitalBanking')],
-    },
-    {
-      title: t('corporate'),
-      submenu: [t('businessAccounts'), t('corporateLoans'), t('cashManagement')],
-    },
-    {
-      title: t('companyInformation'),
-      submenu: [t('aboutUs'), t('leadership'), t('investorRelations')],
-    },
-    {
-      title: t('newsAndArticle'),
+      title: t('home'),
       submenu: [],
     },
+    {
+      title: t('about_us'),
+      submenu: [t('about_us'), t('management')],
+    },
+    {
+      title: t('product'),
+      submenu:[
+        t('saving'),
+        t('loan'),
+        t('auction_info')
+      ]
+    },
+    {
+      title: t('report'),
+      submenu: [
+        t('financial_statements'),
+        t('governance_report'),
+        t('annual_report')
+      ]
+    },
+    {
+      title: t('e_form'),
+      submenu: []
+    }
+   
+    
   ];
 
   // Close submenu and mobile menu when clicking outside
