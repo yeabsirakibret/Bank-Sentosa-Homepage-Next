@@ -85,30 +85,30 @@ export default function Header() {
   };
   
   const toggleMobileNestedSubmenu = (path: string) => {
-    setMobileSubmenusOpen(prev => {
-        const isOpen = !!prev[path];
-        const newStates = { ...prev };
+      setMobileSubmenusOpen(prev => {
+          const isOpen = !!prev[path];
+          const newStates = { ...prev };
 
-        const parentPath = path.substring(0, path.lastIndexOf('-'));
-        Object.keys(newStates).forEach(key => {
-            if (key.startsWith(parentPath + '-') && key.lastIndexOf('-') === path.lastIndexOf('-') && key !== path) {
-                delete newStates[key];
-            }
-        });
+          const parentPath = path.substring(0, path.lastIndexOf('-'));
+          Object.keys(newStates).forEach(key => {
+              if (key.startsWith(parentPath + '-') && key.lastIndexOf('-') === path.lastIndexOf('-') && key !== path) {
+                  delete newStates[key];
+              }
+          });
 
-        if (isOpen) {
-            Object.keys(newStates).forEach(key => {
-                if (key.startsWith(path)) {
-                    delete newStates[key];
-                }
-            });
-        } else {
-            newStates[path] = true;
-        }
+          if (isOpen) {
+              Object.keys(newStates).forEach(key => {
+                  if (key.startsWith(path)) {
+                      delete newStates[key];
+                  }
+              });
+          } else {
+              newStates[path] = true;
+          }
 
-        return newStates;
-    });
-};
+          return newStates;
+      });
+  };
 
   const renderSubmenu = (items: any[], level = 1, parentPath = '') => {
     return (
