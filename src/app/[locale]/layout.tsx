@@ -2,6 +2,7 @@ import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {getLocale} from 'next-intl/server';
 import "./globals.css";
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'BPR Karya Prima Sentosa',
@@ -26,9 +27,7 @@ export default async function RootLayout({
             {children}
           </main>
 
-          <footer className="w-full bg-gray-100 text-black p-4  mt-12 text-center">
-            &copy; Copyright Bank Sentosa (BPR) . All Rights Reserved
-          </footer>
+          <Footer/>
         </NextIntlClientProvider>
       </body>
       
