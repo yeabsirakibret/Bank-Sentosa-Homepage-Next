@@ -46,6 +46,10 @@
   },
   "Global": {
     "description": "Trusted BPR in Indonesia, providing secure and accessible banking services for all. We are committed to delivering the best banking experience with the latest technology.",
-    "digital_banking_services": "Digital Banking Services"
+    "digital_banking_services": "Digital Banking Services",
+    "enjoy_digital": "Enjoy Convenience of Digital Banking Services",
+    "licensed_supervised_by": "Licensed and supervised by",
+    "participant_in_guarantee": "And is a participant in the Guarantee from",
+    "contact_us": "Contact Us"
   }
 }

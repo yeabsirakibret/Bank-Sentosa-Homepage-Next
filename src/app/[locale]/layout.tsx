@@ -3,6 +3,7 @@ import {getLocale} from 'next-intl/server';
 import "./globals.css";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata = {
   title: 'BPR Karya Prima Sentosa',
@@ -28,6 +29,7 @@ export default async function RootLayout({
           </main>
 
           <Footer/>
+          <ScrollToTop />
         </NextIntlClientProvider>
       </body>
       

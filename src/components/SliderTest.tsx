@@ -19,7 +19,7 @@ export default function KeenSliderDemo() {
   useEffect(() => {
     const interval = setInterval(() => {
       instanceRef.current?.next();
-    }, 5000);
+    }, 15000);
     return () => clearInterval(interval);
   }, [instanceRef]);
 
@@ -33,9 +33,9 @@ export default function KeenSliderDemo() {
     },
     {
       desktopImage: 'banner_2.png',
-      mobileImage: 'banner_1_mobile.jpg', // Assuming you have a tall mobile image here too
+      mobileImage: 'banner_2.png', // Assuming you have a tall mobile image here too
       alt: 'Banner 2',
-      text: 'Banner two detail',
+      text: t('enjoy_digital'),
     },
     // Add more slides as needed…
   ];
