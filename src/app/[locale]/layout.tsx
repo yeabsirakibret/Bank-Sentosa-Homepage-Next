@@ -24,7 +24,7 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Header />
 
-          <main className="w-full flex-1 mt-20 bg-blue-400">
+          <main className="w-full flex-1 mt-20 bg-white">
             {children}
           </main>
 

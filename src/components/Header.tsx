@@ -71,30 +71,14 @@ export default function Header() {
       }
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
-      const x = event.clientX;
-      const y = event.clientY;
-      
-
-      const header = headerRef.current;
-      if (!header) return;
-
-      const headerRect = header.getBoundingClientRect();
-       // Calculate total height including submenu
-      let totalHeight = headerRect.height;
-      //console.log(`Mouse position: X=${x}, Y=${y} ${totalHeight}`);
-
-      if (y > totalHeight + 300){
-        setOpenSubmenuIndex(null);
-      }
-    };
+    
 
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('mousemove', handleMouseMove);
+    
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('mousemove', handleMouseMove);
+      
     };
   }, []);
 
@@ -142,6 +126,7 @@ export default function Header() {
           md:absolute  md:shadow-xl md:rounded-lg md:py-2 z-50 md:whitespace-nowrap md:min-w-[200px]
           ${level === 1 ? 'md:left-0 md:top-full md:mt-1 bg-white' : 'md:left-full md:top-0 md:ml-0 bg-white'}
         `}
+        onMouseLeave={() => window.innerWidth >= 768 && level === 1 && setOpenSubmenuIndex(null)}
       >
         {items.map((item, idx) => {
           const currentPath = `${parentPath}-${idx}`;
