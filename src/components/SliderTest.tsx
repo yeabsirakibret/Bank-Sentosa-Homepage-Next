@@ -30,12 +30,14 @@ export default function KeenSliderDemo() {
       mobileImage: 'banner_1_mobile.jpg',
       alt: 'Banner 1',
       text: t('digital_banking_services'),
+      textColor: 'text-white'
     },
     {
       desktopImage: 'banner_2.png',
       mobileImage: 'banner_2.png', // Assuming you have a tall mobile image here too
       alt: 'Banner 2',
       text: t('enjoy_digital'),
+      textColor: 'text-white'
     },
     // Add more slides as needed…
   ];
@@ -60,7 +62,7 @@ export default function KeenSliderDemo() {
               />
             </picture>
             {slide.text && (
-              <div className="absolute left-6 bottom-10 z-10 text-white text-xl sm:text-2xl md:text-3xl font-bold">
+              <div className={`absolute left-6 bottom-10 z-10 ${slide.textColor} text-xl sm:text-2xl md:text-3xl font-bold`}>
                 {slide.text}
               </div>
             )}

@@ -13,6 +13,7 @@ export default function Header() {
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
   const [mobileSubmenusOpen, setMobileSubmenusOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   const menuItems = [
     {
@@ -69,11 +70,34 @@ export default function Header() {
         setMobileSubmenusOpen({});
       }
     };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const x = event.clientX;
+      const y = event.clientY;
+      
+
+      const header = headerRef.current;
+      if (!header) return;
+
+      const headerRect = header.getBoundingClientRect();
+       // Calculate total height including submenu
+      let totalHeight = headerRect.height;
+      //console.log(`Mouse position: X=${x}, Y=${y} ${totalHeight}`);
+
+      if (y > totalHeight + 300){
+        setOpenSubmenuIndex(null);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousemove', handleMouseMove);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
 
   const toggleSubmenu = (index: number) => {
     setMobileSubmenusOpen({});
@@ -168,7 +192,7 @@ export default function Header() {
 
   return (
     <div>
-      <header className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-black p-4 shadow-lg ">
+      <header ref={headerRef} className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-gray-600 p-4 shadow-lg ">
         <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
           <Link href="/" className="text-lg font-bold mx-4">
             <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />
