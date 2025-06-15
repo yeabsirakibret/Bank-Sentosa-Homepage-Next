@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import SliderTestClient from '@/components/SliderTest'; // renamed to clarify it's a client component
 import BankStats from '@/components/HomePageComponents/BankStatsComponent';
 import WhySentosa from '@/components/HomePageComponents/WhySentosaComponent';
+import Testimonials from '@/components/HomePageComponents/Testimonials';
 
 
 
@@ -14,6 +15,7 @@ export default async function HomePage() {
         <SliderTestClient />
         <BankStats />
         <WhySentosa />
+        <Testimonials />
       </div>
     </div>
   );

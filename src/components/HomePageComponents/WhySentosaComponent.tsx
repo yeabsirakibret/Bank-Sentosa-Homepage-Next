@@ -54,7 +54,7 @@ export default function WhySentosa() {
             </div>
 
             <div>
-                <img src="/app_sc_1.png" className='h-96 '/>
+                <img src="/app_sc_1.png" className='md:h-[36rem] h-96'/>
             </div>
         </div>
     </div>
