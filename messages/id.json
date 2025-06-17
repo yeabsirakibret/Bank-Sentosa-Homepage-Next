@@ -105,7 +105,19 @@
     "nominal": "Nominal",
     "month": "bulan",
     "months": "bulan",
-    "million": "juta"
+    "million": "juta",
+    "investment_credit": "Kredit Investasi",
+    "investment_credit_description": "Manfaatkan kredit investasi dari BPR Sentosa untuk membiayai pembelian peralatan produksi usaha, modernisasi mesin usaha Anda, atau sebagai modal untuk memperluas dan mengembangkan usaha baru.",
+    "consumer_credit": "Kredit Konsumen",
+    "consumer_credit_description": "Manfaatkan kredit investasi dari BPR Sentosa untuk membiayai kebutuhan nasabah, terutama yang berkaitan dengan kegiatan konsumsi.",
+    "personal_credit_usage": "Kredit Personal yang dapat digunakan untuk",
+    "usage_home_purchase": "Pembelian Rumah Tinggal",
+    "usage_home_build": "Membangun Rumah",
+    "usage_home_renovation": "Renovasi Rumah",
+    "usage_vehicle": "Kredit Kendaraan Bermotor (Baru/Bekas)",
+    "usage_education_religion": "Pendidikan dan Upacara Keagamaan",
+    "usage_others": "Dan Lainnya",
+    "auction_info": "Info Lelang"
 
   }
 }

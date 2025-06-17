@@ -106,6 +106,27 @@
     "nominal": "Nominal",
     "month": "month",
     "months": "months",
-    "million": "million"
+    "million": "million",
+    "working_capital": "Working Capital",
+    "working_capital_description": "Working Capital Credit Facility for the purpose of developing micro, small and medium enterprises for trade, industry, construction, services, etc.",
+    "working_capital_cta": "Take advantage of working capital credit facilities from BPR Sentosa to develop and expand your business network.",
+    "condition": "Condition",
+    "employee_entrepreneur": "Employee/Entrepreneur",
+    "debtor_age_condition": "The minimum age of the debtor is 21 years and at the time the loan matures the maximum age is 60 years.",
+    "house_ownership_condition": "Have your own house (if you don't have a house, there must be a personal guarantee from parents who own a house)",
+    "sid_condition": "SID clear 2 years / maximum collectibility 2 paid off",
+    "business_age_condition": "The business must have been running for at least 2 years",
+    "investment_credit": "Investment Credit",
+    "investment_credit_description": "Take advantage of investment credit from BPR Sentosa to finance the purchase of business production equipment, modernize your business machines or as capital for expanding and developing new businesses.",
+    "consumer_credit": "Consumer Credit",
+    "consumer_credit_description": "Take advantage of investment credit from BPR Sentosa to finance customer needs, especially those related to consumption activities.",
+    "personal_credit_usage": "Personal Credit that can be used for",
+    "usage_home_purchase": "Purchase of Residential Home",
+    "usage_home_build": "Build a House",
+    "usage_home_renovation": "Home Renovation",
+    "usage_vehicle": "Motor Vehicle Credit (New/Used)",
+    "usage_education_religion": "Education and Religious Ceremonies",
+    "usage_others": "And Others",
+    "auction_info": "Auction Info"
   }
 }

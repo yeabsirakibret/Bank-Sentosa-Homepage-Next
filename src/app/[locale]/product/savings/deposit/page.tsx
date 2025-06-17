@@ -27,12 +27,12 @@ export default async function Deposit() {
 
         <div className='flex flex-col md:flex-row gap-4 justify-center items-center mx-12 my-8'>
 
-            <div>
+            <div className="aspect-[4/3] w-full max-w-md rounded-lg overflow-hidden">
                 <img className='rounded-lg' src="/bpr_sentosa_deposito.jpg" />
             </div>
 
             <div className=''>
-                <div className='flex flex-col mx-10'>
+                <div className='flex flex-col md:mx-10 mx-2'>
                     
                     <h2 className="mb-2 text-4xl font-semibold text-blue-900 uppercase">
                         {t('deposit')}
@@ -63,7 +63,7 @@ export default async function Deposit() {
             </div>
         </div>
 
-        <div className="relative overflow-x-auto mx-10 my-4">
+        <div className="relative overflow-x-auto md:mx-10 mx-2 my-4">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
