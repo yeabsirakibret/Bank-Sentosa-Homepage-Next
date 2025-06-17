@@ -18,49 +18,57 @@ export default function Header() {
   const menuItems = [
     {
       title: t('home'),
+      href: '/',
       submenu: [],
     },
     {
       title: t('about_us'),
+      href: '/about-us',
       submenu: [
-        { title: t('about_us') },
-        { title: t('management') },
+        { title: t('about_us'), href: '/about-us' },
+        { title: t('management'), href: '/about-us/management' },
       ],
     },
     {
       title: t('product'),
+      href: '/product',
       submenu: [
         { 
           title: t('savings'),
+          href: '/product/savings',
           submenu: [
-            { title: t('savings') },
-            { title: t('deposit') }
+            { title: t('savings'), href: '/product/savings' },
+            { title: t('deposit'), href: '/product/savings/deposit' },
           ],
         },
         {
           title: t('loan'),
+          href: '/product/loan',
           submenu: [
-            { title: t('working_capital') },
-            { title: t('investment_credit') },
-            { title: t('consumer_credit') }
+            { title: t('working_capital'), href: '/product/loan/working-capital' },
+            { title: t('investment_credit'), href: '/product/loan/investment-credit' },
+            { title: t('consumer_credit'), href: '/product/loan/consumer-credit' },
           ],
         },
-        { title: t('auction_info') },
+        { title: t('auction_info'), href: '/product/auction-info' },
       ],
     },
     {
       title: t('report'),
+      href: '/report',
       submenu: [
-        { title: t('financial_statements') },
-        { title: t('governance_report') },
-        { title: t('annual_report') },
+        { title: t('financial_statements'), href: '/report/financial-statements' },
+        { title: t('governance_report'), href: '/report/governance-report' },
+        { title: t('annual_report'), href: '/report/annual-report' },
       ],
     },
     {
       title: t('e_form'),
+      href: '/e-form',
       submenu: [],
     },
   ];
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -145,9 +153,14 @@ export default function Header() {
                   }
                 }}
               >
-                <Link href="#" className="block w-full">
-                  {item.title}
-                </Link>
+                {hasSubmenu ? (
+                  <span>{item.title}</span>
+                ) : (
+                  <Link href={item.href} className="block w-full">
+                    {item.title}
+                  </Link>
+                )}
+
                 {hasSubmenu && (
                   <>
                     <span className="md:hidden">
@@ -213,7 +226,14 @@ export default function Header() {
                   className="flex items-center justify-between cursor-pointer px-3 py-2 hover:text-yellow-500 font-bold transition-colors duration-200"
                   onClick={() => toggleSubmenu(index)}
                 >
-                  <span>{item.title}</span>
+                  {item.submenu.length > 0 ? (
+                    <span>{item.title}</span>
+                  ) : (
+                    <Link href={item.href} className="block w-full">
+                      {item.title}
+                    </Link>
+                  )}
+
                   {item.submenu.length > 0 && (
                     openSubmenuIndex === index ? (
                       <ChevronUp className="w-4 h-4 ml-2 transition-transform duration-200" />
