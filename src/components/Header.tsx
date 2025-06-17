@@ -6,6 +6,8 @@ import Link from 'next/link';
 import DownloadApp from './HeaderComponents/DownloadApp';
 import { ChevronDown, ChevronUp, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -14,6 +16,20 @@ export default function Header() {
   const [mobileSubmenusOpen, setMobileSubmenusOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  const locale = useLocale();
+  
+  const isActivePrefix = (href: string) => {
+      const strippedPathname = pathname.replace(`/${locale}`, '') || '/';
+      //console.log(strippedPathname.startsWith(href), "isActivePrefix")
+      return strippedPathname.startsWith(href);
+  }
+
+  const isActive = (href: string) =>{
+    const strippedPathname = pathname.replace(`/${locale}`, '') || '/';
+    //console.log(strippedPathname === href,strippedPathname, href, "isActive")
+    return strippedPathname === href;
+  }
 
   const menuItems = [
     {
@@ -156,7 +172,9 @@ export default function Header() {
                 {hasSubmenu ? (
                   <span>{item.title}</span>
                 ) : (
-                  <Link href={item.href} className="block w-full">
+                  <Link 
+                    href={item.href}
+                    className={`block w-full ${isActive(item.href) ? 'text-yellow-500 font-bold' : ''}`}>
                     {item.title}
                   </Link>
                 )}
@@ -227,11 +245,17 @@ export default function Header() {
                   onClick={() => toggleSubmenu(index)}
                 >
                   {item.submenu.length > 0 ? (
-                    <span>{item.title}</span>
+                    <span className={`${isActivePrefix(item.href) ? 'text-yellow-500 font-bold' : ''}`}>
+                      {item.title}
+                    </span>
                   ) : (
-                    <Link href={item.href} className="block w-full">
+                    <Link
+                      href={item.href}
+                      className={`block w-full ${isActive(item.href) ? 'text-yellow-500 font-bold' : ''}`}
+                    >
                       {item.title}
                     </Link>
+
                   )}
 
                   {item.submenu.length > 0 && (
