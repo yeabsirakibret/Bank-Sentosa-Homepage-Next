@@ -39,7 +39,8 @@ export default function KeenSliderDemo() {
       text: t('enjoy_digital'),
       textColor: 'text-white'
     },
-    // Add more slides as needed…
+    
+    
   ];
 
   return (
