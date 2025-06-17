@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import LanguageSwitch from './LanguageSwitch';
-import Link from 'next/link';
+
 import DownloadApp from './HeaderComponents/DownloadApp';
 import { ChevronDown, ChevronUp, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export default function Header() {
   const t = useTranslations('Header');
