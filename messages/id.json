@@ -83,7 +83,13 @@
     "policy_6": "Mengembangkan sumber daya manusia yang memiliki kompetensi di bidangnya masing-masing.",
     "lps_membership_no": "No. Keanggotaan LPS",
     "check": "Cek",
-    "all": "Semua"
+    "all": "Semua",
+    "management": "Manajemen",
+    "board_of_commissioners": "Dewan Komisaris",
+    "commissioner": "Komisaris",
+    "board_of_directors": "Direksi",
+    "president_director": "Direktur Utama",
+    "director": "Direktur"
 
 
   }

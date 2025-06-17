@@ -84,6 +84,12 @@
     "policy_6": "Developing human resources who have competence in their respective fields.",
     "lps_membership_no": "LPS Membership No.",
     "check": "Check",
-    "all": "All"
+    "all": "All",
+    "management": "Management",
+    "board_of_commissioners": "Board of Commissioners",
+    "commissioner": "Commissioner",
+    "board_of_directors": "Board of Directors",
+    "president_director": "President Director",
+    "director": "Director"
   }
 }
