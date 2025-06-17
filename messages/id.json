@@ -89,7 +89,13 @@
     "commissioner": "Komisaris",
     "board_of_directors": "Direksi",
     "president_director": "Direktur Utama",
-    "director": "Direktur"
+    "director": "Direktur",
+    "savings": "Tabungan",
+    "savings_description": "Produk tabungan BPR Sentosa sangat fleksibel dan memberikan bunga tabungan dengan suku bunga yang sangat kompetitif.",
+    "advantages_benefits": "Keunggulan dan Manfaat",
+    "competitive_interest": "Suku bunga sangat kompetitif",
+    "low_admin_fee": "Biaya administrasi bulanan sangat rendah",
+    "safe_lps": "Aman, karena termasuk dalam program penjaminan simpanan di Lembaga Penjamin Simpanan (LPS)"
 
 
   }

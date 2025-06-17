@@ -90,6 +90,12 @@
     "commissioner": "Commissioner",
     "board_of_directors": "Board of Directors",
     "president_director": "President Director",
-    "director": "Director"
+    "director": "Director",
+    "savings": "Savings",
+    "savings_description": "BPR Sentosa savings products are very flexible and provide savings interest at very competitive interest rates.",
+    "advantages_benefits": "Advantages and Benefits",
+    "competitive_interest": "Interest rates are very competitive",
+    "low_admin_fee": "Very low monthly administration fees",
+    "safe_lps": "Safe, because it is included in the deposit guarantee program at the Deposit Insurance Corporation (LPS)"
   }
 }
