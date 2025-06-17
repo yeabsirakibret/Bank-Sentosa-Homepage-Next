@@ -95,8 +95,17 @@
     "advantages_benefits": "Keunggulan dan Manfaat",
     "competitive_interest": "Suku bunga sangat kompetitif",
     "low_admin_fee": "Biaya administrasi bulanan sangat rendah",
-    "safe_lps": "Aman, karena termasuk dalam program penjaminan simpanan di Lembaga Penjamin Simpanan (LPS)"
-
+    "safe_lps": "Aman, karena termasuk dalam program penjaminan simpanan di Lembaga Penjamin Simpanan (LPS)",
+    "deposit": "Deposito",
+    "deposit_description": "Bagi Anda yang memiliki dana lebih dan ingin memastikan pilihan investasi yang aman dan menguntungkan dengan berbagai fasilitas opsional, manfaatkan Deposito sebagai pilihan terbaik Anda saat ini.",
+    "high_interest": "Bunga tinggi hingga maksimal jaminan suku bunga deposito LPS",
+    "aro": "Bebas perpanjang deposito secara otomatis (Automatic Roll Over / ARO)",
+    "interest_option": "Bunga dapat dimasukkan kembali ke pokok deposito atau ditransfer ke rekening tabungan Anda yang dapat ditarik kapan saja.",
+    "personal_service": "Layanan personal dari Petugas Personal Banking yang akan melayani Anda dengan sepenuh hati",
+    "nominal": "Nominal",
+    "month": "bulan",
+    "months": "bulan",
+    "million": "juta"
 
   }
 }

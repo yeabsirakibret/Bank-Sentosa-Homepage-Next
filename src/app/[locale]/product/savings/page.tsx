@@ -54,7 +54,6 @@ export default async function Savings() {
                             {t('safe_lps')}
                         </li>
                         
-
                     </ul>
 
                 </div>
