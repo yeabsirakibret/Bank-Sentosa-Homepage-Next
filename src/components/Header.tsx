@@ -174,6 +174,7 @@ export default function Header() {
                 ) : (
                   <Link 
                     href={item.href}
+                    onClick={() => setMenuOpen(false)}
                     className={`block w-full ${isActive(item.href) ? 'text-yellow-500 font-bold' : ''}`}>
                     {item.title}
                   </Link>
@@ -210,7 +211,10 @@ export default function Header() {
     <div>
       <header ref={headerRef} className="fixed top-0 left-0 w-full z-50 bg-gray-100 text-gray-600 p-4 shadow-lg ">
         <nav ref={menuRef} className="max-w-7xl mx-auto flex flex-wrap items-center justify-between relative">
-          <Link href="/" className="text-lg font-bold mx-4">
+          <Link 
+            href="/" 
+            onClick={() => setMenuOpen(false)}
+            className="text-lg font-bold mx-4">
             <img src="/sentosa_full_logo.png" alt="Sentosa Bank Logo" className="h-[50px]" />
           </Link>
 
@@ -251,6 +255,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
+                      onClick={() => setMenuOpen(false)}
                       className={`block w-full ${isActive(item.href) ? 'text-yellow-500 font-bold' : ''}`}
                     >
                       {item.title}
