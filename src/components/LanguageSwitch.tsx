@@ -1,33 +1,45 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { useTransition } from 'react';
 
 export default function LanguageSwitch() {
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-  // Replace only the first part of the path
-  const makePathWithLocale = (newLocale: string) => {
+  const switchLocale = (newLocale: string) => {
     const segments = pathname.split('/');
-    segments[1] = newLocale; // swap out locale segment
-    return segments.join('/') || '/';
+    if (segments[1] === 'en' || segments[1] === 'id') {
+      segments[1] = newLocale;
+    } else {
+      segments.unshift(newLocale);
+    }
+
+    const newPath = segments.join('/') || '/';
+
+    startTransition(() => {
+      router.replace(newPath);
+    });
   };
 
   return (
     <div className="flex items-center gap-2 text-gray-400 font-semibold text-sm">
-        <Link
-          href={makePathWithLocale('id')}
-          className={`${currentLocale === 'id'? 'text-yellow-600 text-lg' : 'text-gray-400'}`}>
-            ID
-        </Link>
-        |
-        <Link
-          href={makePathWithLocale('en')}
-          className={`${currentLocale === 'en'? 'text-yellow-600 text-lg' : 'text-gray-400'}`}>
-            EN
-        </Link>
-      </div>
+      <button
+        onClick={() => switchLocale('id')}
+        className={`${currentLocale === 'id' ? 'text-yellow-600 text-lg' : 'text-gray-400'}`}
+      >
+        ID
+      </button>
+      |
+      <button
+        onClick={() => switchLocale('en')}
+        className={`${currentLocale === 'en' ? 'text-yellow-600 text-lg' : 'text-gray-400'}`}
+      >
+        EN
+      </button>
+    </div>
   );
 }

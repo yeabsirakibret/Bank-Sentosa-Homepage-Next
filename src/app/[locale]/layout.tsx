@@ -9,7 +9,10 @@ export const metadata = {
   title: 'BPR Karya Prima Sentosa',
   description: 'BPR terpercaya di Indonesia',
 };
- 
+
+ // app/[locale]/layout.tsx
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({
   children
 }: {
