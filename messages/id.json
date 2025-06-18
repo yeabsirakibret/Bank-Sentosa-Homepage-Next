@@ -126,7 +126,17 @@
     "usage_vehicle": "Kredit Kendaraan Bermotor (Baru/Bekas)",
     "usage_education_religion": "Pendidikan dan Upacara Keagamaan",
     "usage_others": "Dan Lainnya",
-    "auction_info": "Info Lelang"
+    "auction_info": "Info Lelang",
+    "download": "Unduh",
+    "file_name": "Nama File",
+    "view_download": "Lihat / Unduh",
+    "download_forms_description": "Unduh formulir penting untuk layanan perbankan Anda.",
+    "size": "Ukuran",
+    "action": "Tindakan",
+    "no_files": "Tidak ada file tersedia.",
+    "governance_report": "Laporan Tata Kelola",
+    "financial_statements": "Laporan Keuangan",
+    "year": "Tahun"
 
   }
 }

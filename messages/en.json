@@ -127,6 +127,16 @@
     "usage_vehicle": "Motor Vehicle Credit (New/Used)",
     "usage_education_religion": "Education and Religious Ceremonies",
     "usage_others": "And Others",
-    "auction_info": "Auction Info"
+    "auction_info": "Auction Info",
+    "download": "Download",
+    "file_name": "File Name",
+    "view_download": "View / Download",
+    "download_forms_description": "Download important forms for your banking services.",
+    "size": "Size",
+    "action": "Action",
+    "no_files": "No files available.",
+    "governance_report": "Governance Report",
+    "financial_statements": "Financial Statements",
+    "year": "Year"
   }
 }
