@@ -5,7 +5,15 @@ export interface AnnualReport {
 
 export const annualReports: AnnualReport[] = [
   {
-    filename: "Annual Report 2023.pdf",
-    url: "https://banksentosa.co.id/assets/annual/Annual%20Report%202023.pdf"
+    filename: "LAPORAN TAHUNAN 2021",
+    url: "https://banksentosa.co.id/assets/tahunan/LAPORAN%20TAHUNAN%202021%20BPR%20KPS.pdf"
+  },
+  {
+    filename: "LAPORAN TAHUNAN 2020",
+    url: "https://banksentosa.co.id/assets/tahunan/LAPORAN%20TAHUNAN%202020%20BPR%20KPS.pdf"
+  },
+  {
+    filename: "LAPORAN TAHUNAN 2019",
+    url: "https://banksentosa.co.id/assets/tahunan/LAPORAN%20TAHUNAN%202019%20BPR%20IDS.pdf"
   }
 ];
