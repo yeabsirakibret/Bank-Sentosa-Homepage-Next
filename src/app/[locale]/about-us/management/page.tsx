@@ -65,7 +65,7 @@ export default async function Management() {
                         {
                             item.children.map((child, childIndex) =>(
                                 <div key={childIndex} className='flex justify-center items-center'>
-                                    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl shadow-blue-400">
+                                    <div className="max-w-sm hover:scale-105 hover:shadow-blue-900 bg-white border border-gray-200 rounded-lg shadow-xl shadow-blue-400">
                                         <a href="#">
                                             <img className="rounded-t-lg" src={child.imgUrl} alt="" />
                                         </a>
