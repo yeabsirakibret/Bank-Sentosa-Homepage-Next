@@ -97,27 +97,26 @@ export default async function Management({ params: { locale } }: { params: { loc
           <div className="flex flex-col gap-10">
             {(data[section.key as keyof typeof data] as typeof data.board_of_commissioners).map((person, idx) => (
 
-              <div
+            <div
                 key={idx}
-                className="flex flex-col md:flex-row gap-8 items-center bg-white shadow-xl rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200"
-              >
-                
+                className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center bg-white shadow-xl rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200`}
+            >
                 <div className="min-w-[200px] max-w-[300px]">
-                  <Image
+                <Image
                     src={person.imgUrl}
                     alt={person.fullName}
                     width={400}
                     height={400}
                     className="rounded-lg object-cover w-full h-auto"
-                  />
+                />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-800">{person.fullName}</h3>
-                  <p className="text-md font-medium text-blue-600 mb-2">{person.positionTitle}</p>
-                  <p className="text-gray-700 text-sm whitespace-pre-line">{person.description}</p>
+                <h3 className="text-xl font-bold text-gray-800">{person.fullName}</h3>
+                <p className="text-md font-medium text-blue-600 mb-2">{person.positionTitle}</p>
+                <p className="text-gray-700 text-sm whitespace-pre-line">{person.description}</p>
                 </div>
-              </div>
+            </div>
             ))}
           </div>
         </div>
