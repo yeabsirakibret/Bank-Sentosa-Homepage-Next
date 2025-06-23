@@ -72,10 +72,11 @@ const managementData = {
   },
 };
 
-export default async function Management({ params: { locale } }: { params: { locale: 'en' | 'id' } }) {
-
+export default async function Management({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations('Global');
-  const data = managementData[locale];
+  // Only allow 'en' or 'id', fallback to 'en'
+  const safeLocale = (locale === 'id' || locale === 'en') ? locale : 'en';
+  const data = managementData[safeLocale as 'en' | 'id'];
 
   const sections = [
     { key: 'board_of_commissioners', label: t('board_of_commissioners') },
