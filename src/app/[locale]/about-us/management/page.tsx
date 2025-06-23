@@ -1,5 +1,7 @@
+// app/management/page.tsx
 import { getTranslations } from 'next-intl/server';
 import localFont from 'next/font/local';
+import Image from 'next/image';
 
 const geistSans = localFont({
   src: '../../../fonts/GeistVF.woff',
@@ -7,87 +9,117 @@ const geistSans = localFont({
   weight: '100 900',
 });
 
-
 const geistMono = localFont({
-    src: '../../../fonts/GeistMonoVF.woff',
-    variable: '--font-geist-mono',
-    weight: '100 900'
+  src: '../../../fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900'
 });
 
+const managementData = {
+  en: {
+    board_of_commissioners: [
+      {
+        fullName: 'Lena Erdawati',
+        positionTitle: 'Commissioner',
+        description:
+          'Dedicated her career for 3 decades in the world of Banking. Developed expertise in Banking Management and built professional networks among industry and regulators. Now focusing on strengthening Corporate governance and long-term strategy.',
+        imgUrl: '/management-pics/Lena.png',
+      },
+    ],
+    board_of_directors: [
+      {
+        fullName: 'Hariyanto',
+        positionTitle: 'President Director',
+        description:
+          "Has more than 30 years of experience in the financial industry (Bank, Multifinance, Life Insurance, and Rural Bank) including at HSBC, GE Finance, Citibank, Prudential Life Assurance, Avrist Assurance, Zurich Topas Life, Bank Danamon, and SME Finance. Appointed as President Director since 2024. Holds a Bachelor's degree from Atma Jaya University majoring in Business Administration.",
+        imgUrl: '/management-pics/hariyanto.jpeg',
+      },
+      {
+        fullName: 'Drs. Harjito',
+        positionTitle: 'Director of Operations',
+        description:
+          'Experienced in Banking Management and Financial Supervision. Has a track record of 22 years as a Bank Supervisor at Bank Indonesia and continues his service as a Senior Bank Supervisor at the Financial Services Authority (OJK) for 6 years.',
+        imgUrl: '/management-pics/harjito.png',
+      },
+    ],
+  },
+  id: {
+    board_of_commissioners: [
+      {
+        fullName: 'Lena Erdawati',
+        positionTitle: 'Komisaris',
+        description:
+          'Mendedikasikan kariernya selama 3 dekade dalam dunia Perbankan. Mengembangkan keahlian dalam Manajemen Perbankan serta membangun jaringan profesional di kalangan industri dan regulator. Kini fokus pada penguatan tata kelola Perusahaan dan strategi jangka panjang.',
+        imgUrl: '/management-pics/Lena.png',
+      },
+    ],
+    board_of_directors: [
+      {
+        fullName: 'Hariyanto',
+        positionTitle: 'Direktur Utama',
+        description:
+          'Memiliki lebih dari 30 tahun pengalaman di industri keuangan (Bank, Multifinance, Asuransi Jiwa, dan Bank Perkreditan Rakyat) termasuk di HSBC, GE Finance, Citibank, Prudential Life Assurance, Avrist Assurance, Zurich Topas Life, Bank Danamon, dan SME Finance. Diangkat sebagai Direktur Utama sejak tahun 2024. Meraih gelar Sarjana dari Universitas Atma Jaya dengan jurusan Administrasi Bisnis.',
+        imgUrl: '/management-pics/hariyanto.jpeg',
+      },
+      {
+        fullName: 'Drs. Harjito',
+        positionTitle: 'Direktur Operasional',
+        description:
+          'Berpengalaman di bidang Manajemen Perbankan dan Pengawasan Keuangan. Memiliki rekam jejak selama 22 tahun sebagai Pengawas Bank di Bank Indonesia dan melanjutkan pengabdiannya sebagai Pengawas Bank Senior di Otoritas Jasa Keuangan (OJK) selama 6 tahun.',
+        imgUrl: '/management-pics/harjito.png',
+      },
+    ],
+  },
+};
 
-export default async function Management() {
+export default async function Management({ params: { locale } }: { params: { locale: 'en' | 'id' } }) {
+
   const t = await getTranslations('Global');
+  const data = managementData[locale];
 
-  const managementMap = [
-    {
-        title: t('board_of_commissioners'),
-        children: [
-            {
-                fullName: "Lena Erdawati",
-                positionTitle: t('commissioner'),
-                imgUrl: "/management-pics/Lena.png"
-            }
-        ]
-    },
-    {
-        title: t('board_of_directors'),
-        children: [
-            {
-                fullName: "Hariyanto",
-                positionTitle: t('president_director'),
-                imgUrl: "/management-pics/hariyanto.jpeg"
-            },
-            {
-                fullName: "Harjito",
-                positionTitle: t('director'),
-                imgUrl: "/management-pics/harjito.png"
-            }
-        ]
-    }
-  ]
+  const sections = [
+    { key: 'board_of_commissioners', label: t('board_of_commissioners') },
+    { key: 'board_of_directors', label: t('board_of_directors') },
+  ];
 
   return (
     <div className={`${geistSans.className} w-full flex flex-col`}>
-        <div className="p-8 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white shadow-2xl">
-            <h1 className="text-3xl">{t('management')}</h1>
-        </div>
-      
-        {
-            managementMap.map((item, index)=>(
-                <div key={index} className={`${geistMono.className} py-14 px-11`}>
+      <div className="p-8 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white shadow-2xl">
+        <h1 className="text-3xl font-bold">{t('management')}</h1>
+      </div>
 
-                    <h1 className='text-center text-3xl md:underline underline-offset-8 mb-8'>
-                        {item.title}
-                    </h1>
+      {sections.map((section) => (
+        <div key={section.key} className={`${geistMono.className} py-14 px-6 md:px-20`}>
+          <h2 className="text-center text-3xl  mb-8">
+            {section.label}
+          </h2>
 
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className="flex flex-col gap-10">
+            {(data[section.key as keyof typeof data] as typeof data.board_of_commissioners).map((person, idx) => (
 
-                        {
-                            item.children.map((child, childIndex) =>(
-                                <div key={childIndex} className='flex justify-center items-center'>
-                                    <div className="max-w-sm hover:scale-105 hover:shadow-blue-900 bg-white border border-gray-200 rounded-lg shadow-xl shadow-blue-400">
-                                        <a href="#">
-                                            <img className="rounded-t-lg" src={child.imgUrl} alt="" />
-                                        </a>
-                                        <div className="p-5">
-                                            <a href="#">
-                                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                                                    {child.fullName}
-                                                </h5>
-                                            </a>
-                                            <p className="mb-3 font-normal text-gray-700 ">
-                                                {child.positionTitle}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            ))
-                        }
-                    </div>
+              <div
+                key={idx}
+                className="flex flex-col md:flex-row gap-8 items-center bg-white shadow-xl rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200"
+              >
+                <div className="min-w-[150px] max-w-[200px]">
+                  <Image
+                    src={person.imgUrl}
+                    alt={person.fullName}
+                    width={300}
+                    height={300}
+                    className="rounded-lg object-cover w-full h-auto"
+                  />
                 </div>
-            ))
-        }
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-800">{person.fullName}</h3>
+                  <p className="text-md font-medium text-blue-600 mb-2">{person.positionTitle}</p>
+                  <p className="text-gray-700 text-sm whitespace-pre-line">{person.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
