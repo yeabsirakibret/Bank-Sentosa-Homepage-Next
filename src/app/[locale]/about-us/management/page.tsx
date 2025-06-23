@@ -97,7 +97,7 @@ export default async function Management(props: { params: Promise<{ locale: stri
               return (
                 <div
                   key={idx}
-                  className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center bg-white shadow-xl hover:shadow-gray-300 transition-shadow duration-300 rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200`}
+                  className={`flex flex-col ${idx % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center bg-white shadow-xl hover:shadow-gray-300 transition-shadow duration-300 rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200`}
                 >
                   <div className="min-w-[200px] max-w-[300px]">
                     <Image
