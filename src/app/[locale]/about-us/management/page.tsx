@@ -101,15 +101,17 @@ export default async function Management({ params: { locale } }: { params: { loc
                 key={idx}
                 className="flex flex-col md:flex-row gap-8 items-center bg-white shadow-xl rounded-xl overflow-hidden p-4 md:p-6 border border-gray-200"
               >
-                <div className="min-w-[150px] max-w-[200px]">
+                
+                <div className="min-w-[200px] max-w-[300px]">
                   <Image
                     src={person.imgUrl}
                     alt={person.fullName}
-                    width={300}
-                    height={300}
+                    width={400}
+                    height={400}
                     className="rounded-lg object-cover w-full h-auto"
                   />
                 </div>
+
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-800">{person.fullName}</h3>
                   <p className="text-md font-medium text-blue-600 mb-2">{person.positionTitle}</p>
