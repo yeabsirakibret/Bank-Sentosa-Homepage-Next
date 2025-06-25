@@ -38,9 +38,7 @@ export default function WhySentosa() {
                 </div>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 relative w-full h-[600px] bg-cover bg-center bg-no-repeat flex flex-col md:flex-row items-center justify-around">
-            
-           
+        <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 relative w-full min-h-[400px] md:h-[600px] bg-cover bg-center bg-no-repeat flex flex-col md:flex-row items-center justify-around">
             <div className="relative z-10 text-center text-white px-4 max-w-2xl flex flex-col">
                 <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-snug">
                     {t('why_use_sentosa')}
@@ -53,8 +51,12 @@ export default function WhySentosa() {
                 </span>
             </div>
 
-            <div>
-                <img src="/app_sc_1.png" className='md:h-[36rem] h-96'/>
+            <div className="w-full flex justify-center md:block md:w-auto">
+                <img 
+                  src="/app_sc_1.png" 
+                  className="w-full max-w-xs md:max-w-none md:h-[36rem] max-h-72 md:max-h-none object-contain mx-auto"
+                  alt="App Screenshot"
+                />
             </div>
         </div>
     </div>
